@@ -20,7 +20,7 @@ plugins {
 }
 
 group = "de.gmuth"
-version = "3.5"
+version = "3.5-custom.1"
 
 repositories {
     mavenCentral()
@@ -95,7 +95,7 @@ publishing {
             println("> maven repo github")
             maven {
                 name = "GitHubPackages" // Must match regex [A-Za-z0-9_\-.]+.
-                url = uri("https://maven.pkg.github.com/gmuth/ipp-client-kotlin")
+                url = uri("https://maven.pkg.github.com/X-rayS5/ipp-client-kotlin")
                 credentials {
                     username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
                     password = project.findProperty("gpr.token") as String? ?: System.getenv("GITHUB_TOKEN")
@@ -143,24 +143,24 @@ publishing {
             pom {
                 name.set("ipp client library")
                 description.set("A client implementation of the ipp protocol, RFCs 8010, 8011, 3995 and 3996")
-                url.set("https://github.com/gmuth/ipp-client-kotlin")
+                url.set("https://github.com/X-rays5/ipp-client-kotlin")
                 licenses {
                     license {
                         name.set("MIT License")
-                        url.set("https://raw.githubusercontent.com/gmuth/ipp-client-kotlin/master/LICENSE")
+                        url.set("https://raw.githubusercontent.com/X-rays5/ipp-client-kotlin/refs/heads/master/LICENSE")
                     }
                 }
                 developers {
                     developer {
-                        id.set("gmuth")
-                        name.set("Gerhard Muth")
-                        email.set("gerhard.muth@gmx.de")
+                        id.set("X-rayS5")
+                        name.set("X-ray")
+                        email.set("61073708+X-rays5@users.noreply.github.com")
                     }
                 }
                 scm {
-                    connection.set("scm:git:git://github.com/gmuth/ipp-client-kotlin.git")
-                    developerConnection.set("scm:git:ssh://git@github.com/gmuth/ipp-client-kotlin.git")
-                    url.set("https://github.com/gmuth/ipp-client-kotlin")
+                    connection.set("scm:git:git://github.com/X-rays5/ipp-client-kotlin.git")
+                    developerConnection.set("scm:git:git@github.com:X-rays5/ipp-client-kotlin.git")
+                    url.set("https://github.com/X-rays5/ipp-client-kotlin")
                 }
             }
         }
