@@ -12,14 +12,18 @@ plugins {
 }
 
 group = "dev.scheenen"
-version = "3.5"
+version = "3.5.1"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
     testImplementation("org.jetbrains.kotlin:kotlin-test")
+
+    api("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }
 
 defaultTasks("assemble")
@@ -49,45 +53,6 @@ java {
 // Configure Dokka for javadocJar
 tasks.named<Jar>("javadocJar") {
     from(tasks.named<DokkaTask>("dokkaJavadoc"))
-}
-
-// Configure Gradle Central Publisher Plugin
-mavenCentralPublish {
-    publications {
-        create("ippclient") {
-            from(components["java"])
-            pom {
-                name.set("ipp client library")
-                description.set("A client implementation of the ipp protocol written in kotlin ")
-                url.set("https://github.com/X-rays5/ipp-client-kotlin")
-                licenses {
-                    license {
-                        name.set("MIT License")
-                        url.set("https://raw.githubusercontent.com/X-rays5/ipp-client-kotlin/refs/heads/master/LICENSE")
-                    }
-                }
-                developers {
-                    developer {
-                        id.set("X-rayS5")
-                        name.set("X-ray")
-                        email.set("61073708+X-rays5@users.noreply.github.com")
-                    }
-                }
-                scm {
-                    connection.set("scm:git:git://github.com/X-rays5/ipp-client-kotlin.git")
-                    developerConnection.set("scm:git:git@github.com:X-rays5/ipp-client-kotlin.git")
-                    url.set("https://github.com/X-rays5/ipp-client-kotlin.git")
-                }
-            }
-        }
-    }
-
-    credentials {
-        username.set(findProperty("centralTokenUser") as String? ?: System.getenv("CENTRAL_TOKEN_USER"))
-        password.set(findProperty("centralTokenPass") as String? ?: System.getenv("CENTRAL_TOKEN_PASS"))
-    }
-
-    publishingType.set(PublishingType.USER_MANAGED) // or AUTOMATIC
 }
 
 publishing {
